@@ -1,0 +1,8 @@
+== Ruby Challenges
+
+This is a directory with working Ruby scripts that solves some common programming challenges. The complexity of these scripts is varying from "FizzBuzz" solvers to HTML-parsers.  
+
+=== Technologies
+* Ruby 2.2.2
+* Some gems 
+
