@@ -7,18 +7,18 @@ Files will be named /space/*.html
 US phone numbers look like this: 650-458-8929	
 =end
 
-# 
+# Browse only *.html files in directory one by one
 Dir["./space/**/*.html"].each do |file_name|
-	#File.open(file_name, "r").lines do
+	
+	# Read lines in the file & check whether it maches the US Phone number format
 	File.readlines(file_name).each do |line|
-		regexp = /^(?:\+?1[-. ]?)?\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/
+
+		# Phone formats : 1234567890, 123-456-7890, 123.456.7890, 123 456 7890, (123) 456 7890
+		regexp = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/
+		
 		if line =~ regexp 
 			puts line.scan(regexp).join
-			# or puts it into another file
-			f = File.open("us_phones_output", "w+") 
-			f << line.gsub(regexp, '')
 		end
-
-		#puts line.gsub(/^(?:\+?1[-. ]?)?\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/, '')
+		
 	end
 end
